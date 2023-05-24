@@ -40,7 +40,7 @@ void pall(stack_t **n, unsigned int line_n)
 {
 	stack_t *temp;
 
-	(void)line_n
+	(void)line_n;
 	temp = *n;
 	while (temp != NULL)
 	{

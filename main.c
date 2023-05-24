@@ -31,11 +31,11 @@ int main(int argc, char *argv[])
 	while (getline(&buf, &n, fp) != -1)
 	{
 		count++;
-		token = strkok(buf, count);
+		token = strtok(buf, count);
 		if (token != NULL)
 			get_func(token, &head, count);
 	}
-	free(buff);
+	free(buf);
 	free_stack(head);
 	fclose(fp);
 	return (0);
