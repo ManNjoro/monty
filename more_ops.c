@@ -55,3 +55,51 @@ void add(stack_t **n, unsigned int line_n)
 	(*n)->n = result;
 }
 
+
+/**
+ * push_func - pushes an element to the stack
+ * @stack: pointer to the stack
+ * @line_number: line number being executed
+ */
+void push_func(stack_t **stack, unsigned int line_number)
+{
+	int value;
+	char *token;
+	stack_t *new_node;
+
+	token = strtok(NULL, " \t\n");
+	if (token == NULL)
+	{
+		printf("L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (is_number(token))
+	{
+		value = atoi(token);
+		new_node = malloc(sizeof(stack_t));
+		if (new_node == NULL)
+		{
+			printf("Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
+		new_node->n = value;
+		new_node->prev = NULL;
+		if (*stack == NULL)
+		{
+			new_node->next = NULL;
+			*stack = new_node;
+		}
+		else
+		{
+			new_node->next = *stack;
+			(*stack)->prev = new_node;
+			*stack = new_node;
+		}
+	}
+	else
+	{
+		printf("L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
+

@@ -68,7 +68,7 @@ void pall(stack_t **n, unsigned int line_n)
 void get_func(char *op, stack_t **stack, unsigned int line_number)
 {
 	instruction_t find_op[] = {
-		{"push", push},
+		{"push", push_func},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
