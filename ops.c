@@ -70,6 +70,7 @@ void get_func(char *op, stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	int index = 0;
@@ -101,4 +102,27 @@ void pint(stack_t **n, unsigned int line_n)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d", (*n)->n);
+}
+
+/**
+ * pop - removes top element of stack
+ * @n: pointer
+ * @line_n: ..
+ * Return: void
+ */
+void pop(stack_t **n, unsigned int line_n)
+{
+	stack_t *temp;
+
+	if (*n == NULL || n == NULL)
+	{
+		printf("L%d: can't pop an empty stack\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *n;
+	*n = temp->next;
+	if (*n != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
 }
