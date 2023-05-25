@@ -1,10 +1,9 @@
-#include <stdio.h>
 #include "monty.h"
 
 /**
  * main - opens monty file and reads lines
- * @argc: argument count
- * @argv: argument vector
+ * @argc: number of arguments
+ * @argv: array of arguments
  *
  * Return: 0 success, 1 failure
  */
@@ -12,11 +11,11 @@
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	size_t n = 0;
-	char *buf = NULL;
+	ssize_t bytes_read;
+	size_t len = 0;
+	char *line = NULL;
 	char *token = NULL;
-	int count = 0;
-	ssize_t byte;
+	int line_number = 0;
 	stack_t *head = NULL;
 
 	if (argc != 2)
@@ -34,14 +33,14 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			while ((byte = getline(&buf, &n, fp)) != -1)
+			while ((bytes_read = getline(&line, &len, fp)) != -1)
 			{
-				count++;
-				token = strtok(buf, " \t\n");
-				if (token != NULL && token[0] != '#')
-					get_func(token, &head, count);
+				line_number++;
+				token = get_tokens(line, line_number);
+				if (token != NULL)
+					get_func(token, &head, line_number);
 			}
-			free(buf);
+			free(line);
 			free_stack(head);
 			fclose(fp);
 		}
