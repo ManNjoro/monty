@@ -21,14 +21,14 @@ void push(stack_t **n, unsigned int line_n)
 	}
 
 	new_node->n = global_var;
-	new_node->next = NULL;
+	new_node->prev = NULL;
 
 	if (*n == NULL)
 	{
 		*n = new_node;
 	}
-	new_node->prev = *n;
-	(*n)->next = new_node;
+	new_node->next = *n;
+	(*n)->prev = new_node;
 	*n = new_node;
 }
 
