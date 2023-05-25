@@ -7,7 +7,7 @@
  * Return: void
  */
 void push(stack_t **n, unsigned int line_n)
-{	
+{
 	stack_t *new_node;
 
 	(void)line_n;
@@ -100,5 +100,5 @@ void pint(stack_t **n, unsigned int line_n)
 		printf("L%d: can't pint, stack empty\n", line_n);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d",(*n)->n);
+	printf("%d", (*n)->n);
 }
