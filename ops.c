@@ -79,7 +79,7 @@ void get_func(char *op, stack_t **stack, unsigned int line_number)
 	};
 	int i = 0;
 
-	while (find_op[i].opcode != NULL)
+	while (instructions[i].opcode != NULL)
 	{
 		if (strcmp(instructions[i].opcode, op) == 0)
 		{
