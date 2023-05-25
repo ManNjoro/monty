@@ -24,21 +24,27 @@ int main(int argc, char *argv[])
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fp = fopen(argv[1], "r");
-	if (fp == NULL)
+	else
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+		fp = fopen(argv[1], "r");
+		if (fp == NULL)
+		{
+			printf("Error: Can't open file %s\n", argv[1]);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			while ((byte = getline(&buf, &n, fp)) != -1)
+			{
+				count++;
+				token = get_tokens(buf, count);
+				if (token != NULL)
+					get_func(token, &head, count);
+			}
+			free(buf);
+			free_stack(head);
+			fclose(fp);
+		}
 	}
-	while ((byte = getline(&buf, &n, fp)) != -1)
-	{
-		count++;
-		token = get_tokens(buf, count);
-		if (token != NULL)
-			get_func(token, &head, count);
-	}
-	free(buf);
-	free_stack(head);
-	fclose(fp);
 	return (0);
 }
