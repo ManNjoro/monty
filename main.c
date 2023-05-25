@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 	char *buf = NULL;
 	char *token = NULL;
 	int count = 0;
+	ssize_t byte;
 	stack_t *head = NULL;
 
 	if (argc != 2)
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((getline(&buf, &n, fp)) != -1)
+	while (byte = (getline(&buf, &n, fp)) != -1)
 	{
 		count++;
 		token = strtok(buf, "\n");
