@@ -46,7 +46,7 @@ void pall(stack_t **n, unsigned int line_n)
 	(void)line_n;
 	temp = *n;
 
-	if ((*n) == NULL)
+	if ((*n) == NULL || n == NULL)
 		return;
 	while (temp != NULL)
 	{
@@ -69,6 +69,7 @@ void get_func(char *op, stack_t **stack, unsigned int line_number)
 	instruction_t find_op[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int index = 0;
@@ -84,4 +85,20 @@ void get_func(char *op, stack_t **stack, unsigned int line_number)
 	}
 	printf("L%d: unknown instruction %s\n", line_number, op);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * pint - prints the top element of stack
+ * @n: pointer
+ * @line_n: line num
+ * Return: void
+ */
+void pint(stack_t **n, unsigned int line_n)
+{
+	if (*n == NULL || n == NULL)
+	{
+		printf("L%d: can't pint, stack empty\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d",(*n)->n);
 }
