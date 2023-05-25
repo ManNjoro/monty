@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 	char *buf = NULL;
 	char *token = NULL;
 	int count = 0;
-	ssize_t bytes;
 	stack_t *head = NULL;
 
 	if (argc != 2)
