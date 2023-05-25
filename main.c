@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	while ((byte = getline(&buf, &n, fp)) != -1)
 	{
 		count++;
-		token = strtok(buf, "\n");
+		token = get_tokens(buf, count);
 		if (token != NULL)
 			get_func(token, &head, count);
 	}
