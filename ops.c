@@ -7,9 +7,12 @@
  * Return: void
  */
 void push(stack_t **n, unsigned int line_n)
-{
+{	
+	stack_t *new_node;
+
 	(void)line_n;
-	stack_t *new_node = malloc(sizeof(stack_t));
+
+	new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
