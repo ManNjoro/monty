@@ -67,7 +67,7 @@ void pall(stack_t **n, unsigned int line_n)
 
 void get_func(char *op, stack_t **stack, unsigned int line_number)
 {
-	instruction_t find_op[] = {
+	instruction_t instructions[] = {
 		{"push", push_func},
 		{"pall", pall},
 		{"pint", pint},
@@ -77,16 +77,16 @@ void get_func(char *op, stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{NULL, NULL}
 	};
-	int index = 0;
+	int i = 0;
 
-	while (find_op[index].opcode != NULL)
+	while (find_op[i].opcode != NULL)
 	{
-		if (strcmp(find_op[index].opcode, op) == 0)
+		if (strcmp(instructions[i].opcode, op) == 0)
 		{
-			find_op[index].f(stack, line_number);
+			instructions[i].f(stack, line_number);
 			return;
 		}
-		index++;
+		i++;
 	}
 	printf("L%d: unknown instruction %s\n", line_number, op);
 	exit(EXIT_FAILURE);

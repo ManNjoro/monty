@@ -8,8 +8,8 @@
  */
 void nop(stack_t **n, unsigned int line_n)
 {
-	(void) n;
-	(void) line_n;
+	(void)n;
+	(void)line_n;
 }
 
 /**
