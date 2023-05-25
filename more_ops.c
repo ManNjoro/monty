@@ -21,6 +21,8 @@ void nop(stack_t **n, unsigned int line_n)
 
 void swap(stack_t **n, unsigned int line_n)
 {
+	int temp;
+
 	if (*n == NULL || (*n)->next == NULL)
 	{
 		printf("L%u: can't swap, stack too short\n", line_n);
