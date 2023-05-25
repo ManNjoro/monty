@@ -34,3 +34,24 @@ void swap(stack_t **n, unsigned int line_n)
 	(*n)->next->n = temp;
 }
 
+/**
+ * add - adds the top two elements of the stack
+ * @n: ...
+ * @line_n: ...
+ * Return: void
+ */
+void add(stack_t **n, unsigned int line_n)
+{
+	int result;
+
+	if (*n == NULL || (*n)->next == NULL)
+	{
+		printf("L%u: can't add, stack too short\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+
+	result = (*n)->n + (*n)->next->n;
+	pop(n, line_n);
+	(*n)->n = result;
+}
+
