@@ -52,12 +52,11 @@ void pop(stack_t **n, unsigned int line_n);
 void nop(stack_t **n, unsigned int line_n);
 void swap(stack_t **n, unsigned int line_n);
 void add(stack_t **n, unsigned int line_n);
-void sub_func(stack_t **stack, unsigned int line_number);
+void sub(stack_t **n, unsigned int line_n);
 void div_func(stack_t **stack, unsigned int line_number);
 void mul_func(stack_t **stack, unsigned int line_number);
 void get_func(char *op, stack_t **stack, unsigned int line_number);
 int is_number(char *s);
 void free_stack(stack_t *head);
-void get_funct(char *opcode, stack_t **n, unsigned int line_number, char *arg);
 
 #endif
